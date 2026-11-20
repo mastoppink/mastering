@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mastering Audio</title>
+<meta name="description" content="Alat mastering audio di browser — semua diproses lokal di perangkat.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Mastering Audio</h1>
+  <p class="sub">Unggah → pilih template → atur → bandingkan A/B → unduh. Diproses lokal, tanpa server.</p>
+</header>
+<main>
+  <section class="card">
+    <label class="file">
+      <input type="file" id="file" accept="audio/*,.wav,.mp3,.m4a,.aac,.ogg,.flac">
+      <span id="fileLabel">Pilih file audio (WAV / MP3 / M4A)</span>
+    </label>
+    <canvas id="wave" height="110"></canvas>
+    <div class="transport">
+      <button id="play" disabled>▶ Putar</button>
+      <span id="time">0:00 / 0:00</span>
+      <div class="ab" role="group" aria-label="A/B">
+        <button id="btnA" disabled>A · Asli</button>
+        <button id="btnB" class="on" disabled>B · Master</button>
+      </div>
+    </div>
+    <div class="meter"><div id="meterBar"></div><span id="clip">CLIP</span></div>
+    <p class="stats" id="stats">—</p>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <label for="preset">Template</label>
+      <select id="preset"></select>
+    </div>
+    <div id="controls"></div>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <label for="fmt">Format</label>
+      <select id="fmt">
+        <option value="16">WAV 16-bit</option>
+        <option value="24">WAV 24-bit</option>
+      </select>
+    </div>
+    <label class="check"><input type="checkbox" id="normalize" checked> Normalisasi ke target LUFS</label>
+    <button id="export" class="primary" disabled>⬇ Render &amp; Unduh</button>
+    <p class="stats" id="exportStatus"></p>
+  </section>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
